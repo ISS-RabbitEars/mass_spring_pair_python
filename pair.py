@@ -71,7 +71,7 @@ req = 5
 ro = np.asarray([4, 4])
 vo = np.asarray([0 ,0])
 thetao = np.asarray([180, 0]) * np.pi/180
-omegao = np.asarray([0, 0]) * np.pi/180
+omegao = np.asarray([30, 30]) * np.pi/180
 mr = 0.25
 tf = 30 
 
@@ -123,7 +123,7 @@ for i in range(1,nl):
 	yl[i] = ylo + (0.5 + i) * l * np.cos(theta) + flipc * (-1)**i * h * np.cos(np.pi/2 - theta)
 xlf = np.zeros(nframes)
 ylf = np.zeros(nframes)
-xlf[:] = x[1] - mr * np.sin(theta)
+xlf[:] = x[1] - mr * np.sign((y[1]-y[0])*flipa*flipb) * np.sin(theta)
 ylf[:] = y[1] - mr * np.cos(theta)
 
 fig, a=plt.subplots()
